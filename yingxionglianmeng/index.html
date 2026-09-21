@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>英雄联盟配置要求-LOL游戏最低与推荐硬件参数详解</title>
+    <meta name="description" content="本站提供最新最全的《英雄联盟》游戏配置要求查询，包含2024年官方最低配置、推荐配置及电竞级高画质设置建议，帮助玩家优化电脑性能，解决游戏卡顿与掉帧问题。">
+    <meta name="keywords" content="英雄联盟配置要求,LOL最低配置,LOL推荐配置,英雄联盟电脑配置,LOL优化设置">
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #00a8ff;
+            --secondary-color: #17202a;
+            --accent-color: #f1c40f;
+            --bg-color: #f4f6f9;
+            --card-bg: #ffffff;
+            --text-main: #2c3e50;
+            --text-light: #7f8c8d;
+            --border-radius: 8px;
+            --spacing-unit: 1rem;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* 布局容器 */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+        }
+
+        /* 头部导航 */
+        header {
+            background-color: var(--card-bg);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 60px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--secondary-color);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo span {
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            color: var(--text-main);
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Hero 区域 */
+        .hero {
+            background: linear-gradient(135deg, var(--secondary-color) 0%, #2c3e50 100%);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 800;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: #bdc3c7;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+
+        .status-badge {
+            display: inline-block;
+            background-color: rgba(46, 204, 113, 0.2);
+            color: #2ecc71;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(46, 204, 113, 0.3);
+        }
+
+        /* 主要内容区 */
+        main {
+            padding: 3rem 0;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            border-left: 5px solid var(--primary-color);
+            padding-left: 1rem;
+            color: var(--secondary-color);
+        }
+
+        /* 配置对比卡片 */
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .spec-card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .spec-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .spec-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+        }
+
+        .spec-card.minimal::before { background-color: #95a5a6; }
+        .spec-card.recommended::before { background-color: var(--primary-color); }
+        .spec-card.esports::before { background-color: var(--accent-color); }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+
+        .card-icon {
+            font-size: 1.5rem;
+        }
+
+        .spec-list li {
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .spec-label {
+            width: 90px;
+            font-weight: 600;
+            color: var(--text-light);
+            flex-shrink: 0;
+        }
+
+        .spec-value {
+            color: var(--text-main);
+        }
+
+        .spec-note {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background-color: #f8f9fa;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        /* 优化指南 */
+        .guide-section {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .guide-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .guide-item {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .guide-icon {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(0, 168, 255, 0.1);
+            color: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .guide-content h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .guide-content p {
+            font-size: 0.95rem;
+            color: var(--text-light);
+        }
+
+        /* 常见问题 */
+        .faq-section {
+            margin-top: 4rem;
+        }
+
+        .faq-item {
+            background: var(--card-bg);
+            margin-bottom: 1rem;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            background-color: #fff;
+            transition: background-color 0.2s;
+        }
+
+        .faq-question:hover {
+            background-color: #f8f9fa;
+        }
+
+        .faq-answer {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease;
+            color: var(--text-light);
+            background-color: #fafafa;
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 1.5rem;
+            max-height: 500px; /* 近似值，足够大即可 */
+            border-top: 1px solid #eee;
+        }
+
+        .faq-item.active .faq-question {
+            color: var(--primary-color);
+        }
+
+        .icon-arrow {
+            transition: transform 0.3s;
+        }
+
+        .faq-item.active .icon-arrow {
+            transform: rotate(180deg);
+        }
+
+        /* 页脚 */
+        footer {
+            background-color: var(--secondary-color);
+            color: #bdc3c7;
+            padding: 3rem 0;
+            margin-top: 4rem;
+            text-align: center;
+        }
+
+        .footer-content p {
+            margin-bottom: 1rem;
+        }
+
+        .footer-links a {
+            margin: 0 0.5rem;
+            color: #bdc3c7;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        /* 响应式调整 */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none; /* 简化移动端展示 */
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .specs-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-wrapper">
+            <div class="logo">
+                <span>🎮</span> LOL配置查询
+            </div>
+            <nav class="nav-links">
+                <a href="#">最低配置</a>
+                <a href="#">推荐配置</a>
+                <a href="#">高画质优化</a>
+                <a href="#">FAQ</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <span class="status-badge">系统要求已更新 (2024)</span>
+            <h1>英雄联盟配置要求详解</h1>
+            <p>无论你是使用集成显卡还是RTX 40系列显卡，本指南将帮助你找到最适合的硬件设置，确保流畅的游戏体验。</p>
+        </div>
+    </section>
+
+    <main class="container">
+        
+        <!-- 配置对比部分 -->
+        <h2 class="section-title">硬件配置要求对比</h2>
+        <div class="specs-grid">
+            
+            <!-- 最低配置 -->
+            <article class="spec-card minimal">
+                <div class="card-header">
+                    <h3 class="card-title">最低配置</h3>
+                    <span class="card-icon">⚠️</span>
+                </div>
+                <ul class="spec-list">
+                    <li>
+                        <span class="spec-label">操作系统</span>
+                        <span class="spec-value">Windows 7 64位</span>
+                    </li>
+                    <li>
+                        <span class="spec-label">处理器 (CPU)</span>
+                        <span class="spec-value">Intel Core 2 Duo T5250</span>
+                    </li>
+                    <li>
+                        <span class="spec-label">内存</span>
+                        <span class="spec-value">2 GB</span>
+                    </li>
+                    <li>
+                        <span class="spec-label">显卡</span>
+                        <span class="spec-value">NVIDIA GeForce 7300 GT / ATI Radeon X1300</span>
+                    </li>
+                    <li>
+                        <span class="spec-label">硬盘空间</span>
+                        <span class="spec-value">5 GB 可用空间</span>
+                    </li>
+                </ul>
+                <div class="spec-note">
+                    <strong>注意：</strong> 此配置仅能保证游戏以低画质在1080p分辨率下勉强运行。不建议在团战密集时使用此设置。
+                </div>
+            </article>
+
+            <!-- 推荐配置 -->
+            <article class="spec-card recommended">
+                <div class="card-header">
+                    <h3 class="card-title">推荐配置</h3>
+                    <span class="card-icon">✅</span>
+                </div>
+                <ul class="spec-list">
+                    <li>
+                        <span class="spec-label">操作系统</span>
+                        <span class="spec-value">Windows 10 64位</span>
+                    </li>
+                    <li>
+                        <span class="spec-label">处理器 (CPU)</span>
+                        <span class="spec-value">Intel Core i3-2100</span>
+                    </li>
+                    <li>
+                        <span class="spec-label">内存</span>
+                        <span class="spec-value">4 GB</span>
+                    </li>
+                    <li>
+                        <span class="spec-label">显卡</span>
+                        <span class="spec-value">NVIDIA GeForce GTS 450 / ATI Radeon HD 5850</span>
+                    </li>
+                    <li>
+                        <span class="spec-label">硬盘空间</span>
+                        <span class="spec-value">5 GB 可用空间</span>
+                    </li>
+                </ul>
+                <div class="spec-note">
+                    <strong>注意：</strong> 此配置可流畅运行游戏，支持1080p分辨率下的中等画质，适合大多数休闲玩家。
+                </div>
+            </article>
+
+            <!-- 电竞/高画质配置 -->
+            <article class="spec-card esports">
+                <div class="card-header">
+                    <h3 class="card-title">电竞/高画质</h3>
+                    <span class="card-icon">🏆</span>
+                </div>
+                <ul class="spec-list">
+                    <li>
+                        <span class="spec-label">操作系统</span>
+                        <span class="spec-value">Windows 10/11 64位</span>
+                    </li>
+                    <li>
+                        <span class="spec-label">处理器 (CPU)</span>
+                        <span class="spec-value">Intel Core i5-8400 / AMD Ryzen 5 2600</span>
+                    </li>
+                    <li>
+                        <span class="spec-label">内存</span>
+                        <span class="spec-value">8 GB</span>
+                    </li>
+                    <li>
+                        <span class="spec-label">显卡</span>
+                        <span class="spec-value">NVIDIA GeForce GTX 1060 / AMD RX 580</span>
+                    </li>
+                    <li>
+                        <span class="spec-label">硬盘空间</span>
+                        <span class="spec-value">5 GB 可用空间</span>
+                    </li>
+                </ul>
+                <div class="spec-note">
+                    <strong>注意：</strong> 此配置建议开启高帧率模式，支持144Hz及以上显示器，团战无压力。
+                </div>
+            </article>
+
+        </div>
+
+        <!-- 优化指南 -->
+        <h2 class="section-title">游戏性能优化指南</h2>
+        <section class="guide-section">
+            <div class="guide-grid">
+                <div class="guide-item">
+                    <div class="guide-icon">1</div>
+                    <div class="guide-content">
+                        <h3>画质设置建议</h3>
+                        <p>在游戏设置中，建议将“阴影”和“反射”调至低或中，将“纹理”和“特效”调至高，以平衡帧数与视觉效果。</p>
+                    </div>
+                </div>
+                <div class="guide-item">
+                    <div class="guide-icon">2</div>
+                    <div class="guide-content">
+                        <h3>关闭后台程序</h3>
+                        <p>确保浏览器、下载工具和杀毒软件处于关闭状态，这些程序会占用大量内存和CPU资源。</p>
+                    </div>
+                </div>
+                <div class="guide-item">
+                    <div class="guide-icon">3</div>
+                    <div class="guide-content">
+                        <h3>更新驱动程序</h3>
+                        <p>定期更新显卡驱动（NVIDIA/AMD）可以显著提升游戏兼容性和运行效率。</p>
+                    </div>
+                </div>
+                <div class="guide-item">
+                    <div class="guide-icon">4</div>
+                    <div class="guide-content">
+                        <h3>启用垂直同步</h3>
+                        <p>如果你的显示器是60Hz，开启垂直同步可以消除画面撕裂；如果使用高刷屏，建议关闭以获得最高帧率。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ 常见问题 -->
+        <section class="faq-section">
+            <h2 class="section-title">常见问题 (FAQ)</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>我的电脑配置低于推荐配置，还能玩吗？</span>
+                    <span class="icon-arrow">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>当然可以。游戏支持最低配置运行。但建议你将游戏内的所有特效全部调至最低，分辨率设置为 1024x768，并关闭垂直同步。虽然画面效果不佳，但可以保证基本的游戏进程。</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>LOL对CPU和显卡的要求分别是什么？</span>
+                    <span class="icon-arrow">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>英雄联盟主要吃CPU（尤其是多核性能）和内存。虽然对显卡要求不高，但显卡性能直接影响高画质下的帧数。对于大多数玩家，8GB内存是目前的最低安全标准。</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>如何查看我的电脑配置？</span>
+                    <span class="icon-arrow">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>在Windows系统中，你可以右键点击“此电脑”或“我的电脑”，选择“属性”，即可查看处理器、内存和操作系统版本。显卡信息可以在设备管理器中查看。</p>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container footer-content">
+            <p>&copy; 2024 LOL配置查询站. 本站数据仅供参考，以游戏官方发布为准。</p>
+            <div class="footer-links">
+                <a href="#">关于我们</a>
+                <a href="#">免责声明</a>
+                <a href="#">联系站长</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ 手风琴交互逻辑
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                question.addEventListener('click', () => {
+                    // 关闭其他已打开的项
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+                    // 切换当前项状态
+                    item.classList.toggle('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
