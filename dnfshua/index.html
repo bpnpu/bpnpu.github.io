@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="提供专业的DNF刷图辅助工具下载与使用指南，包含多角色自动刷图、脚本管理、防封号设置及安全注意事项，帮助玩家高效通关地下城。">
+    <meta name="keywords" content="DNF刷图辅助工具,地下城与勇士脚本,自动刷图软件,DNF辅助,游戏外挂">
+    <title>DNF刷图辅助工具-专业地下城与勇士自动刷图与脚本管理平台</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #3b82f6;
+            --primary-dark: #1d4ed8;
+            --accent-color: #f59e0b;
+            --bg-dark: #0f172a;
+            --bg-card: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border-color: #334155;
+            --success-color: #10b981;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background-color: rgba(15, 23, 42, 0.95);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--text-main);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            font-size: 1rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--primary-color);
+        }
+
+        .btn-download {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 10px 24px;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: background-color 0.2s;
+        }
+
+        .btn-download:hover {
+            background-color: var(--primary-dark);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 80px 0;
+            text-align: center;
+            background: radial-gradient(circle at top center, #1e293b 0%, #0f172a 70%);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero h1 .highlight {
+            color: var(--primary-color);
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .stat-item h3 {
+            font-size: 2rem;
+            color: var(--accent-color);
+        }
+
+        .stat-item p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+            background-color: var(--bg-dark);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .section-title p {
+            color: var(--text-muted);
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background-color: var(--bg-card);
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-color);
+        }
+
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            background-color: rgba(59, 130, 246, 0.1);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 15px;
+        }
+
+        .feature-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Guide Section */
+        .guide {
+            padding: 80px 0;
+            background-color: var(--bg-card);
+        }
+
+        .guide-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .guide-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .guide-content p {
+            color: var(--text-muted);
+            margin-bottom: 30px;
+        }
+
+        .step-list {
+            counter-reset: step;
+        }
+
+        .step-item {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .step-item::before {
+            counter-increment: step;
+            content: counter(step);
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .step-text h4 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .step-text p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .guide-image {
+            background-color: var(--bg-dark);
+            border-radius: 12px;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .guide-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.8;
+        }
+
+        .guide-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(15, 23, 42, 0.9));
+            padding: 20px;
+        }
+
+        /* Safety Section */
+        .safety {
+            padding: 80px 0;
+        }
+
+        .safety-box {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(15, 23, 42, 0) 100%);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            border-radius: 16px;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .safety-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .safety-header svg {
+            color: var(--success-color);
+            width: 32px;
+            height: 32px;
+        }
+
+        .safety-list li {
+            padding-left: 30px;
+            position: relative;
+            color: var(--text-muted);
+        }
+
+        .safety-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--success-color);
+            font-weight: bold;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--bg-card);
+            border-top: 1px solid var(--border-color);
+            padding: 60px 0 20px;
+            margin-top: 80px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand p {
+            color: var(--text-muted);
+            margin-top: 15px;
+            max-width: 300px;
+        }
+
+        .footer-col h4 {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            color: var(--text-main);
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .nav-wrapper {
+                flex-direction: column;
+                height: auto;
+                padding: 15px 0;
+                gap: 15px;
+            }
+
+            nav ul {
+                gap: 15px;
+                font-size: 0.9rem;
+            }
+
+            .guide-container {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-wrapper">
+            <a href="#" class="logo">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg>
+                <span>DNF刷图辅助工具</span>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#features" class="active">功能特性</a></li>
+                    <li><a href="#guide">使用指南</a></li>
+                    <li><a href="#safety">安全须知</a></li>
+                    <li><a href="#download">下载中心</a></li>
+                </ul>
+            </nav>
+            <a href="#download" class="btn-download">立即下载</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <h1>解放双手，<br><span class="highlight">DNF刷图辅助工具</span>助你高效通关</h1>
+                <p>专为地下城与勇士玩家打造的专业脚本与辅助系统。支持多角色管理、智能挂机、自动拾取及防封号检测，让搬砖更轻松，收益最大化。</p>
+                <div style="display: flex; justify-content: center; gap: 15px;">
+                    <a href="#download" class="btn-download" style="padding: 12px 32px; font-size: 1.1rem;">获取最新版本</a>
+                    <a href="#guide" style="padding: 12px 32px; border: 1px solid var(--border-color); border-radius: 6px; font-weight: 500;">查看演示</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <h3>10万+</h3>
+                        <p>活跃用户</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>99.8%</h3>
+                        <p>存活率</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>24h</h3>
+                        <p>全天候运行</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="features">
+            <div class="container">
+                <div class="section-title">
+                    <h2>核心功能亮点</h2>
+                    <p>专为搬砖党与休闲玩家设计，功能全面且稳定</p>
+                </div>
+                <div class="feature-grid">
+                    <article class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                        </div>
+                        <h3>智能脚本管理</h3>
+                        <p>内置海量副本脚本，支持自定义脚本编写。智能识别怪物仇恨范围，自动处理技能释放，模拟真实玩家操作。</p>
+                    </article>
+                    <article class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                        </div>
+                        <h3>多角色一键托管</h3>
+                        <p>支持同时开启多个角色进行刷图，自动切换副本，管理疲劳值与药水消耗，实现真正的全自动搬砖。</p>
+                    </article>
+                    <article class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                        </div>
+                        <h3>防封号黑科技</h3>
+                        <p>内置IP变动检测、鼠标移动模拟及操作频率随机化算法，大幅降低账号风险，保障账号长期安全。</p>
+                    </article>
+                    <article class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polygon points="10 8 16 12 10 16 10 8"></polygon></svg>
+                        </div>
+                        <h3>自动拾取与交易</h3>
+                        <p>支持自动拾取金币、材料及稀有装备，一键出售低级材料，自动转账至主账号，省去繁琐的搬砖步骤。</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Guide Section -->
+        <section id="guide" class="guide">
+            <div class="container guide-container">
+                <div class="guide-content">
+                    <h2>简单三步，开启高效搬砖之旅</h2>
+                    <p>无需复杂的编程基础，即使零基础也能轻松上手。我们的界面设计直观友好，功能布局符合玩家习惯。</p>
+                    <ul class="step-list">
+                        <li class="step-item">
+                            <div class="step-text">
+                                <h4>1. 下载并安装客户端</h4>
+                                <p>访问下载中心，选择适合您电脑配置的版本，安装包小巧且无病毒风险。</p>
+                            </div>
+                        </li>
+                        <li class="step-item">
+                            <div class="step-text">
+                                <h4>2. 登录并配置脚本</h4>
+                                <p>输入账号密码登录，在脚本管理器中选择对应副本（如安徒恩、卢克等）。</p>
+                            </div>
+                        </li>
+                        <li class="step-item">
+                            <div class="step-text">
+                                <h4>3. 开启挂机，享受收益</h4>
+                                <p>点击开始运行，软件将自动控制角色进行战斗，您可以去休息或处理其他事务。</p>
+                            </div>
+                        </li>
+                    </ul>
+                    <a href="#download" class="btn-download" style="display: inline-block; margin-top: 10px;">开始使用</a>
+                </div>
+                <div class="guide-image">
+                    <img src="https://picsum.photos/seed/dnf_assist_ui/600/400.jpg" alt="DNF刷图辅助软件界面展示">
+                    <div class="guide-overlay">
+                        <h3 style="color: white;">现代化操作界面</h3>
+                        <p style="color: #ccc; font-size: 0.9rem;">实时监控，数据透明</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Safety Section -->
+        <section id="safety" class="safety">
+            <div class="container">
+                <div class="safety-box">
+                    <div class="safety-header">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                        <h3>安全与合规提示</h3>
+                    </div>
+                    <p style="color: var(--text-muted);">我们致力于提供最安全的辅助工具，但请玩家务必注意以下几点，以确保账号安全：</p>
+                    <ul class="safety-list">
+                        <li>请勿在网吧等公共网络环境下长期使用，建议使用家庭网络或专用机房。</li>
+                        <li>定期更换辅助工具的配置参数（如技能释放间隔、移动速度），避免被系统判定为脚本行为。</li>
+                        <li>本工具仅供个人娱乐与合法搬砖使用，禁止用于任何违规交易或作弊行为。</li>
+                        <li>如遇游戏更新导致脚本失效，请及时关注官方公告进行版本更新。</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Download CTA -->
+        <section id="download" class="features" style="padding: 60px 0; background: var(--bg-card);">
+            <div class="container" style="text-align: center;">
+                <h2 style="font-size: 2rem; margin-bottom: 20px;">准备好提升搬砖效率了吗？</h2>
+                <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto 40px;">
+                    立即下载最新版DNF刷图辅助工具，体验前所未有的自动化搬砖乐趣。技术支持团队全天候在线，为您解答疑难。
+                </p>
+                <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+                    <div style="background: var(--bg-dark); padding: 20px; border-radius: 8px; border: 1px solid var(--border-color); min-width: 200px;">
+                        <h4 style="color: var(--accent-color);">Windows 版</h4>
+                        <p style="font-size: 0.8rem; color: var(--text-muted); margin: 10px 0;">支持 Win7/10/11</p>
+                        <a href="#" style="color: var(--primary-color); font-weight: bold;">下载 v3.2.0 &rarr;</a>
+                    </div>
+                    <div style="background: var(--bg-dark); padding: 20px; border-radius: 8px; border: 1px solid var(--border-color); min-width: 200px;">
+                        <h4 style="color: var(--accent-color);">免安装便携版</h4>
+                        <p style="font-size: 0.8rem; color: var(--text-muted); margin: 10px 0;">无需安装，即开即用</p>
+                        <a href="#" style="color: var(--primary-color); font-weight: bold;">下载 ZIP &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#" class="logo">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg>
+                        <span>DNF刷图辅助工具</span>
+                    </a>
+                    <p>专注于为地下城与勇士玩家提供最稳定、高效的自动化辅助解决方案。让游戏回归乐趣，让搬砖不再枯燥。</p>
+                </div>
+                <div class="footer-col">
+                    <h4>产品功能</h4>
+                    <ul>
+                        <li><a href="#">自动刷图</a></li>
+                        <li><a href="#">多开管理</a></li>
+                        <li><a href="#">脚本市场</a></li>
+                        <li><a href="#">防封号系统</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>支持服务</h4>
+                    <ul>
+                        <li><a href="#">使用教程</a></li>
+                        <li><a href="#">常见问题</a></li>
+                        <li><a href="#">版本更新日志</a></li>
+                        <li><a href="#">联系客服</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>关于我们</h4>
+                    <ul>
+                        <li><a href="#">关于平台</a></li>
+                        <li><a href="#">隐私政策</a></li>
+                        <li><a href="#">服务条款</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 DNF刷图辅助工具. All rights reserved. 本站内容仅供交流学习使用.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
