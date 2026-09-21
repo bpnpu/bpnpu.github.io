@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="留住小鸟 - 专业的小鸟饲养与家庭喂食指南，提供吸引小鸟的技巧、安全喂食器推荐、鸟类习性解析及家庭庭院生态维护方案。">
+    <meta name="keywords" content="留住小鸟, 鸟类饲养, 家庭喂食, 生态庭院, 观鸟">
+    <title>留住小鸟 - 家庭生态与喂食指南</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-green: #2e7d32;
+            --light-green: #e8f5e9;
+            --accent-brown: #795548;
+            --text-dark: #333333;
+            --text-light: #666666;
+            --bg-body: #f9fbf9;
+            --bg-card: #ffffff;
+            --radius: 12px;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--bg-body);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* 布局容器 */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* 头部导航 */
+        header {
+            background-color: var(--bg-card);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-green);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--accent-brown);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            font-weight: 500;
+            color: var(--text-dark);
+            transition: var(--transition);
+        }
+
+        nav a:hover {
+            color: var(--primary-green);
+        }
+
+        /* Hero 区域 */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-green) 0%, #1b5e20 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            background-color: white;
+            color: var(--primary-green);
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        /* 通用区块样式 */
+        section {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 2rem;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: var(--text-light);
+        }
+
+        /* 核心方法区 */
+        .methods-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .method-card {
+            background: var(--bg-card);
+            padding: 30px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border-top: 4px solid var(--primary-green);
+        }
+
+        .method-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .method-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .method-card h3 {
+            margin-bottom: 15px;
+            font-size: 1.25rem;
+        }
+
+        .method-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* 喂食指南 */
+        .feeding-guide {
+            background-color: var(--light-green);
+        }
+
+        .guide-container {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .guide-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .guide-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--primary-green);
+        }
+
+        .guide-list li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .guide-list svg {
+            flex-shrink: 0;
+            width: 20px;
+            height: 20px;
+            margin-top: 3px;
+            fill: var(--primary-green);
+        }
+
+        .guide-image {
+            flex: 1;
+            min-width: 300px;
+            background-color: white;
+            padding: 20px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+
+        .guide-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        /* 安全与注意事项 */
+        .safety-section {
+            background-color: #fff3e0;
+        }
+
+        .safety-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .safety-item {
+            background: white;
+            padding: 20px;
+            border-radius: var(--radius);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .safety-badge {
+            background-color: #ffe0b2;
+            color: #e65100;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        /* 常见问题 */
+        .faq-section {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--bg-card);
+            margin-bottom: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            background: white;
+        }
+
+        .faq-question::after {
+            content: '+';
+            font-size: 1.5rem;
+            color: var(--primary-green);
+            transition: transform 0.3s;
+        }
+
+        .faq-item.active .faq-question::after {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            padding: 0 20px;
+            background-color: #fafafa;
+            color: var(--text-light);
+        }
+
+        .faq-item.active .faq-answer {
+            padding-bottom: 20px;
+            max-height: 200px;
+        }
+
+        /* 页脚 */
+        footer {
+            background-color: #263238;
+            color: #cfd8dc;
+            padding: 50px 0 20px;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--primary-green);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #37474f;
+            font-size: 0.9rem;
+        }
+
+        /* 响应式调整 */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .nav-wrapper {
+                flex-direction: column;
+                height: auto;
+                padding: 15px 0;
+            }
+
+            nav ul {
+                margin-top: 15px;
+                gap: 15px;
+                font-size: 0.9rem;
+            }
+
+            .guide-container {
+                flex-direction: column-reverse;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-wrapper">
+            <a href="#" class="logo">
+                🐦 留住小鸟
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#methods">吸引技巧</a></li>
+                    <li><a href="#feeding">喂食指南</a></li>
+                    <li><a href="#safety">安全注意</a></li>
+                    <li><a href="#faq">常见问题</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>为城市生活增添自然之美</h1>
+                <p>无论是阳台、庭院还是屋顶，通过科学的生态布置与喂食技巧，让小鸟成为您生活中亲密的伙伴。</p>
+                <a href="#methods" class="cta-btn">开始布置您的生态区</a>
+            </div>
+        </section>
+
+        <!-- 核心方法 -->
+        <section id="methods" class="container">
+            <div class="section-title">
+                <h2>如何科学留住小鸟</h2>
+                <p>吸引并留住小鸟需要理解它们的习性，并创造适宜的生存环境。</p>
+            </div>
+            <div class="methods-grid">
+                <article class="method-card">
+                    <span class="method-icon">🌿</span>
+                    <h3>丰富植物环境</h3>
+                    <p>种植本地原生植物，提供天然的庇护所和食物来源。灌木丛是鸟类筑巢和躲避天敌的理想场所。</p>
+                </article>
+                <article class="method-card">
+                    <span class="method-icon">💧</span>
+                    <h3>提供清洁水源</h3>
+                    <p>定期更换的水源是吸引小鸟的关键。安装小型喷泉或浅碟，保持水质清洁，避免传播疾病。</p>
+                </article>
+                <article class="method-card">
+                    <span class="method-icon">🪺</span>
+                    <h3>设置人工巢箱</h3>
+                    <p>在树干或墙壁上悬挂人工鸟巢箱，根据目标鸟种调整开口大小，为它们提供安全的繁殖空间。</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- 喂食指南 -->
+        <section id="feeding" class="feeding-guide">
+            <div class="container">
+                <div class="guide-container">
+                    <div class="guide-text">
+                        <h3>吸引鸟类的最佳食物</h3>
+                        <p style="margin-bottom: 20px; color: #555;">不同的鸟类偏好不同的食物。了解这些偏好，能让您的喂食器更有效率。</p>
+                        <ul class="guide-list">
+                            <li>
+                                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                                <span><strong>油料种子：</strong>葵花籽、向日葵籽适合吸引麻雀、山雀和金丝雀。</span>
+                            </li>
+                            <li>
+                                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                                <span><strong>坚果类：</strong>核桃和花生是松鸦和乌鸦的最爱，需悬挂高处。</span>
+                            </li>
+                            <li>
+                                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                                <span><strong>水果与浆果：</strong>苹果片、浆果适合食果性鸟类，冬季尤为重要。</span>
+                            </li>
+                            <li>
+                                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                                <span><strong>面包屑：</strong>适量使用，避免喂食霉变面包。</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="guide-image">
+                        <!-- 使用 Picsum 生成自然风景占位图 -->
+                        <img src="https://picsum.photos/seed/birdfeeder/600/400" alt="鸟类喂食器与自然环境" loading="lazy">
+                        <div style="text-align: center; margin-top: 10px; font-size: 0.9rem; color: #777;">
+                            图：理想的户外鸟类观察环境
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 安全注意事项 -->
+        <section id="safety" class="safety-section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>安全与注意事项</h2>
+                    <p>在享受与鸟类互动的同时，确保它们的健康与安全是首要任务。</p>
+                </div>
+                <div class="safety-grid">
+                    <div class="safety-item">
+                        <div class="safety-badge">1</div>
+                        <div>
+                            <h4>定期清洁</h4>
+                            <p style="font-size: 0.9rem; color: #555;">每周清洗喂食器和水盆，防止细菌滋生。</p>
+                        </div>
+                    </div>
+                    <div class="safety-item">
+                        <div class="safety-badge">2</div>
+                        <div>
+                            <h4>避免诱捕</h4>
+                            <p style="font-size: 0.9rem; color: #555;">不要使用粘网或诱捕笼，这违反动物保护法规。</p>
+                        </div>
+                    </div>
+                    <div class="safety-item">
+                        <div class="safety-badge">3</div>
+                        <div>
+                            <h4>避开危险区域</h4>
+                            <p style="font-size: 0.9rem; color: #555;">放置在猫狗难以触及、且没有强风直吹的地方。</p>
+                        </div>
+                    </div>
+                    <div class="safety-item">
+                        <div class="safety-badge">4</div>
+                        <div>
+                            <h4>监测健康状况</h4>
+                            <p style="font-size: 0.9rem; color: #555;">留意鸟类行为异常，生病时及时隔离。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section id="faq" class="container">
+            <div class="section-title">
+                <h2>常见问题解答</h2>
+            </div>
+            <div class="faq-section">
+                <div class="faq-item">
+                    <div class="faq-question">什么时候开始喂食小鸟效果最好？</div>
+                    <div class="faq-answer">
+                        <p>秋季和冬季是鸟类食物短缺的时期，此时开始喂食最容易吸引鸟类。在繁殖季节，鸟类更倾向于寻找昆虫和植物种子，但提供水源和栖息地依然有益。</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">为什么喂食器里总有鸟，但后来就不来了？</div>
+                    <div class="faq-answer">
+                        <p>可能的原因包括：食物被污染或发霉、水源被污染、放置位置被天敌（如猫）占据，或者食物种类不吸引当地的鸟类。建议更换食物或调整位置。</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">需要买昂贵的设备才能留住小鸟吗？</div>
+                    <div class="faq-answer">
+                        <p>不需要。虽然专业的防捕食器更安全，但简单的浅碟、悬挂的坚果和干净的种子同样能吸引大量鸟类。关键在于食物的新鲜和环境的清洁。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h4>关于留住小鸟</h4>
+                    <p style="font-size: 0.9rem; line-height: 1.8;">
+                        我们致力于推广城市生态保护，帮助市民通过简单的家庭布置，为城市野生动物创造生存空间。
+                    </p>
+                </div>
+                <div class="footer-col">
+                    <h4>快速链接</h4>
+                    <ul>
+                        <li><a href="#methods">吸引技巧</a></li>
+                        <li><a href="#feeding">喂食指南</a></li>
+                        <li><a href="#safety">安全注意</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>相关资源</h4>
+                    <ul>
+                        <li><a href="#">本地鸟类图鉴</a></li>
+                        <li><a href="#">巢箱制作指南</a></li>
+                        <li><a href="#">社区观测活动</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 留住小鸟 - 生态保护与家庭饲养指南. 保留所有权利.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 简单的 FAQ 折叠交互
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqItems = document.querySelectorAll('.faq-item');
+
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                question.addEventListener('click', () => {
+                    // 关闭其他已打开的项
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+                    // 切换当前项
+                    item.classList.toggle('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
