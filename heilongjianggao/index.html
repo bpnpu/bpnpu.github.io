@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="黑龙江高考时间官方查询与备考指南。提供历年黑龙江高考时间表、报名时间、科目安排、录取批次及注意事项，帮助考生科学规划复习进度。">
+    <meta name="keywords" content="黑龙江高考时间,黑龙江高考时间表,黑龙江高考报名时间,黑龙江高考录取批次,黑龙江高考政策">
+    <title>黑龙江高考时间 - 官方时间表与录取批次查询指南</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #1a73e8;
+            --secondary-color: #34a853;
+            --text-dark: #202124;
+            --text-gray: #5f6368;
+            --bg-light: #f8f9fa;
+            --bg-white: #ffffff;
+            --border-color: #dadce0;
+            --shadow-sm: 0 1px 2px 0 rgba(60,64,67,0.3), 0 1px 3px 1px rgba(60,64,67,0.15);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --container-width: 1200px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Utility */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+        }
+
+        .section-title::before {
+            content: '';
+            display: block;
+            width: 6px;
+            height: 24px;
+            background-color: var(--primary-color);
+            margin-right: 12px;
+            border-radius: 3px;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--bg-white);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 64px;
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            color: var(--text-dark);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 24px;
+        }
+
+        nav a {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--primary-color);
+        }
+
+        .cta-button {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .cta-button:hover {
+            background-color: #1557b0;
+            color: white;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #1a73e8 0%, #0d47a1 100%);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+            font-weight: 800;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        .date-highlight {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            backdrop-filter: blur(5px);
+        }
+
+        .date-highlight strong {
+            margin: 0 4px;
+        }
+
+        /* Main Content */
+        main {
+            padding: 40px 0;
+        }
+
+        /* Key Info Grid */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+
+        .info-card {
+            background: var(--bg-white);
+            padding: 24px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .info-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .info-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            color: var(--primary-color);
+        }
+
+        .info-card p {
+            font-size: 0.95rem;
+            color: var(--text-gray);
+            line-height: 1.7;
+        }
+
+        .highlight-text {
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+
+        /* Timeline Section */
+        .timeline-section {
+            background-color: var(--bg-white);
+            padding: 40px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 40px;
+        }
+
+        .timeline-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .timeline-table th, .timeline-table td {
+            padding: 16px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .timeline-table th {
+            background-color: var(--bg-light);
+            font-weight: 600;
+            color: var(--text-dark);
+            width: 20%;
+        }
+
+        .timeline-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .status-upcoming {
+            background-color: #e8f0fe;
+            color: #1967d2;
+        }
+
+        .status-past {
+            background-color: #e6f4ea;
+            color: #137333;
+        }
+
+        /* Advice Section */
+        .advice-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .advice-item {
+            background: var(--bg-white);
+            padding: 24px;
+            border-radius: 8px;
+            border-left: 4px solid var(--secondary-color);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .advice-item h4 {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+
+        .advice-item ul {
+            padding-left: 20px;
+        }
+
+        .advice-item li {
+            font-size: 0.9rem;
+            color: var(--text-gray);
+            margin-bottom: 6px;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            margin-top: 60px;
+        }
+
+        .faq-item {
+            background: var(--bg-white);
+            margin-bottom: 16px;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+
+        .faq-question {
+            padding: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #fff;
+        }
+
+        .faq-question:hover {
+            background-color: #f8f9fa;
+        }
+
+        .faq-answer {
+            padding: 0 20px 20px;
+            color: var(--text-gray);
+            display: none;
+            border-top: 1px solid var(--border-color);
+            padding-top: 16px;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        .faq-item.active .faq-question {
+            color: var(--primary-color);
+        }
+
+        .faq-toggle {
+            transition: transform 0.3s;
+        }
+
+        .faq-item.active .faq-toggle {
+            transform: rotate(180deg);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #202124;
+            color: #9aa0a6;
+            padding: 40px 0;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .footer-col h4 {
+            color: #e8eaed;
+            margin-bottom: 16px;
+            font-size: 1rem;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a:hover {
+            color: white;
+        }
+
+        .copyright {
+            margin-top: 40px;
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #3c4043;
+            font-size: 0.85rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                height: auto;
+                padding: 16px 0;
+                gap: 16px;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .timeline-table th, .timeline-table td {
+                display: block;
+                width: 100%;
+            }
+
+            .timeline-table th {
+                background: none;
+                font-weight: 600;
+                padding-bottom: 8px;
+            }
+
+            .timeline-table td {
+                padding: 8px 0;
+                border-bottom: 1px dashed var(--border-color);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 10v6M2 10v6"></path>
+                    <path d="M20 10a2 2 0 0 0-2-2v-6a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8z"></path>
+                    <path d="M12 18v-6"></path>
+                </svg>
+                <span>高招通</span>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">高考时间</a></li>
+                    <li><a href="#">招生计划</a></li>
+                    <li><a href="#">志愿填报</a></li>
+                    <li><a href="#">政策解读</a></li>
+                </ul>
+            </nav>
+            <a href="#" class="cta-button">查看录取结果</a>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>黑龙江高考时间查询</h1>
+            <p>掌握最新黑龙江高考时间安排，了解报名、考试及录取批次，科学备考，决胜未来。</p>
+            <div class="date-highlight">
+                <strong>2024年</strong> 高考将于 <strong>6月7日</strong> 至 <strong>6月7日</strong> 正式举行
+            </div>
+        </div>
+    </section>
+
+    <main class="container">
+        
+        <!-- 核心信息卡片 -->
+        <section class="info-grid">
+            <article class="info-card">
+                <h3>📅 考试时间</h3>
+                <p>黑龙江高考一般安排在每年6月的第1周。2024年考试时间为6月7日至6月7日。具体科目时间如下：</p>
+                <ul style="margin-top:10px; font-size:0.9rem; color:#5f6368;">
+                    <li>• <strong>语文</strong>：6月7日 09:00-11:30</li>
+                    <li>• <strong>数学</strong>：6月7日 15:00-17:00</li>
+                    <li>• <strong>外语</strong>：6月8日 09:00-11:00</li>
+                </ul>
+            </article>
+
+            <article class="info-card">
+                <h3>📝 报名时间</h3>
+                <p>普通高校招生全国统一考试报名工作通常分两个阶段进行：</p>
+                <ul style="margin-top:10px; font-size:0.9rem; color:#5f6368;">
+                    <li>• <strong>网上报名</strong>：一般在每年11月中下旬开始。</li>
+                    <li>• <strong>现场确认</strong>：随网上报名同步进行，需采集照片及指纹。</li>
+                </ul>
+            </article>
+
+            <article class="info-card">
+                <h3>🎓 录取批次</h3>
+                <p>黑龙江省高考实行平行志愿投档模式，通常包含以下批次：</p>
+                <ul style="margin-top:10px; font-size:0.9rem; color:#5f6368;">
+                    <li>• <strong>提前批</strong>：军队、公安、公费师范生等。</li>
+                    <li>• <strong>本科一批</strong>：重点本科院校。</li>
+                    <li>• <strong>本科二批</strong>：普通本科院校。</li>
+                    <li>• <strong>专科批</strong>：高等职业教育院校。</li>
+                </ul>
+            </article>
+        </section>
+
+        <!-- 详细时间轴 -->
+        <section class="timeline-section">
+            <h2 class="section-title">黑龙江高考关键时间节点</h2>
+            <table class="timeline-table">
+                <thead>
+                    <tr>
+                        <th>事项</th>
+                        <th>时间节点</th>
+                        <th>状态</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>普通高考报名</td>
+                        <td>2023年11月（预计）</td>
+                        <td><span class="status-badge status-past">已完成</span></td>
+                    </tr>
+                    <tr>
+                        <td>艺术类、体育类报名</td>
+                        <td>2023年11月（预计）</td>
+                        <td><span class="status-badge status-past">已完成</span></td>
+                    </tr>
+                    <tr>
+                        <td>艺术/体育类专业课省统考</td>
+                        <td>2023年12月-2024年1月</td>
+                        <td><span class="status-badge status-past">已完成</span></td>
+                    </tr>
+                    <tr>
+                        <td>高考文化课考试</td>
+                        <td>2024年6月7日-6月7日</td>
+                        <td><span class="status-badge status-upcoming">即将开始</span></td>
+                    </tr>
+                    <tr>
+                        <td>高考成绩查询</td>
+                        <td>2024年6月下旬（预计）</td>
+                        <td><span class="status-badge status-upcoming">待定</span></td>
+                    </tr>
+                    <tr>
+                        <td>志愿填报</td>
+                        <td>2024年6月下旬-7月上旬（预计）</td>
+                        <td><span class="status-badge status-upcoming">待定</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 备考建议 -->
+        <section>
+            <h2 class="section-title">考前备考与注意事项</h2>
+            <div class="advice-grid">
+                <div class="advice-item">
+                    <h4>作息调整</h4>
+                    <ul>
+                        <li>考前一周应停止熬夜，保证充足睡眠。</li>
+                        <li>按照考试时间表进行模拟练习，调整生物钟。</li>
+                        <li>饮食清淡，避免肠胃不适影响考试。</li>
+                    </ul>
+                </div>
+                <div class="advice-item">
+                    <h4>证件准备</h4>
+                    <ul>
+                        <li>务必携带准考证、身份证原件。</li>
+                        <li>建议准备2B铅笔、黑色签字笔、橡皮等文具。</li>
+                        <li>提前熟悉考点位置和交通路线。</li>
+                    </ul>
+                </div>
+                <div class="advice-item">
+                    <h4>心态调整</h4>
+                    <ul>
+                        <li>保持平常心，不盲目焦虑。</li>
+                        <li>遇到难题不慌张，先易后难，合理分配时间。</li>
+                        <li>遵守考场纪律，诚信应考。</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 常见问题 FAQ -->
+        <section class="faq-section">
+            <h2 class="section-title">常见问题解答</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    黑龙江高考总分是多少？
+                    <svg class="faq-toggle" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </div>
+                <div class="faq-answer">
+                    黑龙江省普通高考采用“3+1+2”模式，总分为750分。其中语文、数学、外语各150分；物理或历史科目选择一门，按原始分计入（100分）；另外两门再选科目（如政治、地理、化学、生物等）按等级赋分计入（100分）。
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    往年黑龙江高考时间有变动吗？
+                    <svg class="faq-toggle" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </div>
+                <div class="faq-answer">
+                    近几年黑龙江高考时间相对固定，通常均为6月7日、8日两天。但具体日期（如是否为第一个周末）或科目安排微调需以当年黑龙江省教育考试院发布的正式公告为准。
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    考生如何查询黑龙江高考时间安排？
+                    <svg class="faq-toggle" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </div>
+                <div class="faq-answer">
+                    建议考生密切关注“黑龙江省教育考试院”官方网站及官方微信公众号，所有官方的高考时间表、准考证打印时间及考试安排都会第一时间在此发布。
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h4>关于高招通</h4>
+                    <p style="font-size: 0.9rem; color: #9aa0a6;">
+                        专注于为黑龙江考生提供权威、及时的高考资讯、时间查询及志愿填报指导服务。
+                    </p>
+                </div>
+                <div class="footer-col">
+                    <h4>快速链接</h4>
+                    <ul>
+                        <li><a href="#">黑龙江省教育考试院</a></li>
+                        <li><a href="#">高考报名系统</a></li>
+                        <li><a href="#">成绩查询入口</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>联系方式</h4>
+                    <ul>
+                        <li>咨询热线：0451-12345678</li>
+                        <li>电子邮箱：service@gaokao.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2024 黑龙江高考时间查询网 版权所有 | 本页面信息仅供参考，具体以官方发布为准</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 简单的FAQ手风琴交互逻辑
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                question.addEventListener('click', () => {
+                    // 关闭其他打开的项
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+                    // 切换当前项状态
+                    item.classList.toggle('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
