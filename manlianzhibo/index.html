@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="曼联直播为您提供最新的曼联比赛直播、赛程表、比赛回放及赛事资讯。实时关注红魔动态，不错过任何一场精彩对决。">
+    <meta name="keywords" content="曼联直播,曼联比赛直播,曼联赛程,曼联回放,红魔直播">
+    <title>曼联直播-红魔赛事实时直播与赛程回放平台</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --m-red: #DA291C;
+            --m-dark-red: #8B0000;
+            --m-gold: #FFD700;
+            --m-black: #111111;
+            --m-gray: #f4f4f4;
+            --m-text: #333333;
+            --m-text-light: #666666;
+            --container-width: 1200px;
+            --radius: 8px;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            background-color: var(--m-gray);
+            color: var(--m-text);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--m-black);
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .header-top {
+            background-color: var(--m-dark-red);
+            font-size: 12px;
+            padding: 5px 0;
+            text-align: center;
+        }
+
+        .header-main {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 900;
+            color: white;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--m-red);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-menu a {
+            font-weight: 500;
+            font-size: 16px;
+            position: relative;
+        }
+
+        .nav-menu a:hover, .nav-menu a.active {
+            color: var(--m-red);
+        }
+
+        .nav-menu a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--m-red);
+        }
+
+        .live-badge {
+            background-color: #ff0000;
+            color: white;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 10px;
+            margin-left: 5px;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2c2c2c 100%);
+            color: white;
+            padding: 40px 0;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23DA291C" fill-opacity="0.05"%3E%3Cpath d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .hero-text h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+            line-height: 1.2;
+        }
+
+        .hero-text p {
+            color: #ccc;
+            font-size: 16px;
+        }
+
+        .current-match-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            border-radius: var(--radius);
+            min-width: 300px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .match-status {
+            text-align: center;
+            font-weight: bold;
+            color: var(--m-gold);
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .match-teams {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .team {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .team-logo {
+            width: 50px;
+            height: 50px;
+            background-color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--m-dark-red);
+            font-size: 24px;
+            font-weight: 900;
+        }
+
+        .team-name {
+            font-size: 16px;
+        }
+
+        .score {
+            font-size: 32px;
+            color: white;
+        }
+
+        .match-time {
+            font-size: 12px;
+            color: #888;
+        }
+
+        .watch-btn {
+            background-color: var(--m-red);
+            color: white;
+            text-align: center;
+            padding: 12px;
+            border-radius: var(--radius);
+            font-weight: bold;
+            transition: background 0.3s;
+            cursor: pointer;
+        }
+
+        .watch-btn:hover {
+            background-color: #b01c14;
+        }
+
+        /* Main Content */
+        main {
+            padding-bottom: 50px;
+        }
+
+        .section-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 10px;
+        }
+
+        .section-title h2 {
+            font-size: 24px;
+            color: var(--m-black);
+            border-left: 5px solid var(--m-red);
+            padding-left: 15px;
+        }
+
+        .section-more {
+            font-size: 14px;
+            color: var(--m-text-light);
+        }
+
+        /* Schedule Grid */
+        .schedule-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .match-card {
+            background: white;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .match-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .match-card-header {
+            background-color: #f9f9f9;
+            padding: 10px 15px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .match-competition {
+            font-size: 12px;
+            color: var(--m-text-light);
+            background: #eee;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        .match-date {
+            font-size: 12px;
+            color: var(--m-text-light);
+        }
+
+        .match-card-body {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .home-team, .away-team {
+            margin-bottom: 10px;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .home-team span, .away-team span {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background: #eee;
+            border-radius: 50%;
+            line-height: 30px;
+            margin-right: 8px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .vs-text {
+            color: #ccc;
+            font-size: 12px;
+            margin: 5px 0;
+        }
+
+        .match-card-footer {
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            background: #fafafa;
+        }
+
+        .action-btn {
+            font-size: 12px;
+            padding: 6px 12px;
+            border: 1px solid var(--m-dark-red);
+            color: var(--m-dark-red);
+            border-radius: 4px;
+            background: white;
+        }
+
+        .action-btn:hover {
+            background: var(--m-dark-red);
+            color: white;
+        }
+
+        /* Highlights Section */
+        .highlights-section {
+            background-color: white;
+            padding: 30px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            margin-bottom: 40px;
+        }
+
+        .video-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .video-card {
+            position: relative;
+            border-radius: var(--radius);
+            overflow: hidden;
+            aspect-ratio: 16/9;
+            background-color: #000;
+            cursor: pointer;
+        }
+
+        .video-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.7;
+            transition: opacity 0.3s;
+        }
+
+        .video-card:hover img {
+            opacity: 0.5;
+        }
+
+        .play-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50px;
+            height: 50px;
+            background-color: rgba(0,0,0,0.6);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid white;
+        }
+
+        .play-icon::after {
+            content: '';
+            border-style: solid;
+            border-width: 8px 0 8px 14px;
+            border-color: transparent transparent transparent white;
+            margin-left: 4px;
+        }
+
+        .video-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 15px;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: white;
+        }
+
+        .video-title {
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+
+        .video-meta {
+            font-size: 12px;
+            color: #ccc;
+        }
+
+        /* Info Grid */
+        .info-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+        }
+
+        .news-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .news-item {
+            display: flex;
+            gap: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .news-item:last-child {
+            border-bottom: none;
+        }
+
+        .news-thumb {
+            width: 120px;
+            height: 80px;
+            background-color: #ddd;
+            border-radius: 4px;
+            flex-shrink: 0;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .news-content h3 {
+            font-size: 16px;
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        .news-content h3:hover {
+            color: var(--m-red);
+        }
+
+        .news-meta {
+            font-size: 12px;
+            color: #999;
+        }
+
+        .sidebar {
+            background: white;
+            padding: 20px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+
+        .sidebar h3 {
+            font-size: 18px;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #eee;
+        }
+
+        .ranking-list li {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px dashed #eee;
+            font-size: 14px;
+        }
+
+        .ranking-list li:last-child {
+            border-bottom: none;
+        }
+
+        .rank-num {
+            font-weight: bold;
+            color: var(--m-dark-red);
+            width: 20px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--m-black);
+            color: #888;
+            padding: 40px 0 20px;
+            margin-top: 50px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+
+        .footer-col h4 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--m-red);
+        }
+
+        .copyright {
+            text-align: center;
+            border-top: 1px solid #333;
+            padding-top: 20px;
+            font-size: 13px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-main {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .nav-menu {
+                gap: 15px;
+                font-size: 14px;
+            }
+
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .news-item {
+                flex-direction: column;
+            }
+
+            .news-thumb {
+                width: 100%;
+                height: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-top">
+            24小时为您提供高清曼联比赛直播，极速流畅，无卡顿
+        </div>
+        <div class="container header-main">
+            <a href="#" class="logo">
+                <span>Red</span>MAN UTD
+            </a>
+            <nav class="nav-menu">
+                <a href="#" class="active">直播中心 <span class="live-badge">LIVE</span></a>
+                <a href="#">赛程安排</a>
+                <a href="#">集锦回放</a>
+                <a href="#">新闻资讯</a>
+                <a href="#">球迷社区</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container hero-content">
+            <div class="hero-text">
+                <h1>曼联直播 - 红魔主场激情时刻</h1>
+                <p>实时追踪曼联最新赛事，高清画质，专业解说。点击下方按钮观看正在进行的比赛。</p>
+            </div>
+            <div class="current-match-card">
+                <div class="match-status">比赛进行中</div>
+                <div class="match-teams">
+                    <div class="team">
+                        <div class="team-logo">MU</div>
+                        <span class="team-name">曼联</span>
+                    </div>
+                    <div class="score">2 : 1</div>
+                    <div class="team">
+                        <div class="team-logo">OPP</div>
+                        <span class="team-name">对手</span>
+                    </div>
+                </div>
+                <div class="match-time">第 78 分钟 | 英超联赛</div>
+                <div class="watch-btn">立即观看直播</div>
+            </div>
+        </div>
+    </section>
+
+    <main class="container">
+        
+        <!-- Next Matches Section -->
+        <section>
+            <div class="section-title">
+                <h2>即将开赛</h2>
+                <a href="#" class="section-more">查看全部赛程 &rarr;</a>
+            </div>
+            <div class="schedule-grid">
+                <!-- Match Card 1 -->
+                <article class="match-card">
+                    <div class="match-card-header">
+                        <span class="match-competition">英超联赛</span>
+                        <span class="match-date">2023-11-25 23:00</span>
+                    </div>
+                    <div class="match-card-body">
+                        <div class="home-team"><span>M</span>曼联</div>
+                        <div class="vs-text">VS</div>
+                        <div class="away-team"><span>A</span>利物浦</div>
+                    </div>
+                    <div class="match-card-footer">
+                        <a href="#" class="action-btn">设置提醒</a>
+                        <a href="#" class="action-btn">查看分析</a>
+                    </div>
+                </article>
+
+                <!-- Match Card 2 -->
+                <article class="match-card">
+                    <div class="match-card-header">
+                        <span class="match-competition">欧冠联赛</span>
+                        <span class="match-date">2023-12-05 03:00</span>
+                    </div>
+                    <div class="match-card-body">
+                        <div class="home-team"><span>M</span>曼联</div>
+                        <div class="vs-text">VS</div>
+                        <div class="away-team"><span>A</span>拜仁慕尼黑</div>
+                    </div>
+                    <div class="match-card-footer">
+                        <a href="#" class="action-btn">设置提醒</a>
+                        <a href="#" class="action-btn">查看分析</a>
+                    </div>
+                </article>
+
+                <!-- Match Card 3 -->
+                <article class="match-card">
+                    <div class="match-card-header">
+                        <span class="match-competition">足总杯</span>
+                        <span class="match-date">2023-12-15 20:45</span>
+                    </div>
+                    <div class="match-card-body">
+                        <div class="home-team"><span>M</span>曼联</div>
+                        <div class="vs-text">VS</div>
+                        <div class="away-team"><span>A</span>阿森纳</div>
+                    </div>
+                    <div class="match-card-footer">
+                        <a href="#" class="action-btn">设置提醒</a>
+                        <a href="#" class="action-btn">查看分析</a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Highlights Section -->
+        <section class="highlights-section">
+            <div class="section-title">
+                <h2>精彩集锦</h2>
+                <a href="#" class="section-more">更多视频 &rarr;</a>
+            </div>
+            <div class="video-list">
+                <div class="video-card">
+                    <img src="https://picsum.photos/seed/manutd1/400/225" alt="曼联进球集锦">
+                    <div class="play-icon"></div>
+                    <div class="video-info">
+                        <div class="video-title">绝杀时刻！曼联3-2逆转取胜</div>
+                        <div class="video-meta">2小时前 | 15万次播放</div>
+                    </div>
+                </div>
+                <div class="video-card">
+                    <img src="https://picsum.photos/seed/manutd2/400/225" alt="B费精彩助攻">
+                    <div class="play-icon"></div>
+                    <div class="video-info">
+                        <div class="video-title">B费送出上帝视角助攻</div>
+                        <div class="video-meta">5小时前 | 8万次播放</div>
+                    </div>
+                </div>
+                <div class="video-card">
+                    <img src="https://picsum.photos/seed/manutd3/400/225" alt="奥纳纳扑救">
+                    <div class="play-icon"></div>
+                    <div class="video-info">
+                        <div class="video-title">门将神扑救主</div>
+                        <div class="video-meta">昨天 | 12万次播放</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="info-grid">
+            <!-- News List -->
+            <section>
+                <div class="section-title">
+                    <h2>最新资讯</h2>
+                </div>
+                <div class="news-list">
+                    <article class="news-item">
+                        <div class="news-thumb" style="background-image: url('https://picsum.photos/seed/news1/200/150');"></div>
+                        <div class="news-content">
+                            <h3><a href="#">滕哈格谈球队近期状态：我们需要保持专注</a></h3>
+                            <div class="news-meta">2023-11-24 | 赛场动态</div>
+                        </div>
+                    </article>
+                    <article class="news-item">
+                        <div class="news-thumb" style="background-image: url('https://picsum.photos/seed/news2/200/150');"></div>
+                        <div class="news-content">
+                            <h3><a href="#">拉什福德：球迷的支持是我们前进的最大动力</a></h3>
+                            <div class="news-meta">2023-11-23 | 球员专访</div>
+                        </div>
+                    </article>
+                    <article class="news-item">
+                        <div class="news-thumb" style="background-image: url('https://picsum.photos/seed/news3/200/150');"></div>
+                        <div class="news-content">
+                            <h3><a href="#">曼联青训小将表现抢眼，获得一线队征召</a></h3>
+                            <div class="news-meta">2023-11-22 | 青训新闻</div>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <!-- Sidebar -->
+            <aside>
+                <div class="sidebar">
+                    <h3>球队积分榜</h3>
+                    <ul class="ranking-list">
+                        <li>
+                            <span><span class="rank-num">1</span>阿森纳</span>
+                            <span>28分</span>
+                        </li>
+                        <li>
+                            <span><span class="rank-num">2</span>利物浦</span>
+                            <span>27分</span>
+                        </li>
+                        <li>
+                            <span><span class="rank-num">3</span>曼联</span>
+                            <span>24分</span>
+                        </li>
+                        <li>
+                            <span><span class="rank-num">4</span>曼城</span>
+                            <span>23分</span>
+                        </li>
+                        <li>
+                            <span><span class="rank-num">5</span>切尔西</span>
+                            <span>20分</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="sidebar" style="margin-top: 20px;">
+                    <h3>热门话题</h3>
+                    <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px;">
+                        <span style="background:#eee; padding:4px 8px; border-radius:4px; font-size:12px; color:#555;">#曼联夺冠</span>
+                        <span style="background:#eee; padding:4px 8px; border-radius:4px; font-size:12px; color:#555;">#红魔精神</span>
+                        <span style="background:#eee; padding:4px 8px; border-radius:4px; font-size:12px; color:#555;">#滕哈格</span>
+                        <span style="background:#eee; padding:4px 8px; border-radius:4px; font-size:12px; color:#555;">#老特拉福德</span>
+                    </div>
+                </div>
+            </aside>
+        </div>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h4>曼联直播</h4>
+                    <p style="font-size: 14px; line-height: 1.8;">
+                        专注于曼联球迷的赛事直播平台。提供英超、欧冠等顶级赛事的实时高清直播，以及丰富的赛后分析、球员数据和球迷社区交流。
+                    </p>
+                </div>
+                <div class="footer-col">
+                    <h4>快速导航</h4>
+                    <ul>
+                        <li><a href="#">英超直播</a></li>
+                        <li><a href="#">欧冠直播</a></li>
+                        <li><a href="#">足总杯直播</a></li>
+                        <li><a href="#">社区论坛</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>关于我们</h4>
+                    <ul>
+                        <li><a href="#">网站简介</a></li>
+                        <li><a href="#">版权声明</a></li>
+                        <li><a href="#">免责声明</a></li>
+                        <li><a href="#">联系方式</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 曼联直播. All Rights Reserved. 本站仅提供信息展示，不提供任何视频文件存储。</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+                  </html>
