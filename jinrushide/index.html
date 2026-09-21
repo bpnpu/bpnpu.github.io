@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="进入时的画面-沉浸式视觉引导与交互设计指南。探索网页加载时的首屏体验、过渡动画、加载进度条设计及品牌风格展示。">
+    <meta name="keywords" content="进入时的画面,加载动画,首屏设计,网页过渡,加载进度">
+    <title>进入时的画面-沉浸式加载体验与首屏设计指南</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --accent-color: #38bdf8;
+            --accent-hover: #0ea5e9;
+            --border-color: #334155;
+            --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Utility */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Header */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background-color: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem 0;
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #38bdf8, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.5px;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--accent-color);
+        }
+
+        /* Hero Section - The "First Screen" */
+        .hero {
+            position: relative;
+            height: 80vh;
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
+        }
+
+        .hero-content {
+            z-index: 2;
+            text-align: center;
+            max-width: 800px;
+            padding: 2rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 2.5rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background-color: var(--accent-color);
+            color: #0f172a;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        .btn:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-2px);
+        }
+
+        /* Loader Showcase Section */
+        .showcase {
+            padding: 5rem 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        /* Card Styles */
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border-color: var(--accent-color);
+        }
+
+        .card-icon {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            padding: 1rem;
+            background: rgba(56, 189, 248, 0.1);
+            border-radius: 12px;
+            color: var(--accent-color);
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .card p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Interactive Demo Area */
+        .demo-area {
+            background: #000;
+            border-radius: 12px;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+
+        .demo-controls {
+            margin-top: 1.5rem;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .demo-btn {
+            padding: 0.5rem 1rem;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .demo-btn:hover {
+            border-color: var(--accent-color);
+        }
+
+        /* Types of Loaders */
+        .loader-spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid rgba(255, 255, 255, 0.1);
+            border-left-color: var(--accent-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        .loader-wave {
+            display: flex;
+            align-items: flex-end;
+            gap: 6px;
+            height: 50px;
+        }
+
+        .wave-bar {
+            width: 8px;
+            background-color: var(--accent-color);
+            border-radius: 4px;
+            animation: wave 1s ease-in-out infinite;
+        }
+
+        .wave-bar:nth-child(2) { animation-delay: 0.1s; height: 60%; }
+        .wave-bar:nth-child(3) { animation-delay: 0.2s; height: 80%; }
+        .wave-bar:nth-child(4) { animation-delay: 0.3s; height: 50%; }
+        .wave-bar:nth-child(5) { animation-delay: 0.4s; height: 70%; }
+
+        .loader-pulse {
+            width: 20px;
+            height: 20px;
+            background-color: var(--accent-color);
+            border-radius: 50%;
+            animation: pulse 1.5s infinite;
+        }
+
+        /* Content Text */
+        .article-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 4rem 0;
+        }
+
+        .article-content article {
+            margin-bottom: 4rem;
+        }
+
+        .article-content h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        .article-content h3 {
+            font-size: 1.5rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .article-content p {
+            margin-bottom: 1.5rem;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .article-content ul {
+            list-style: disc;
+            padding-left: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        .article-content li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--card-bg);
+            border-top: 1px solid var(--border-color);
+            padding: 4rem 0 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-col h4 {
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-col a {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .footer-col a:hover {
+            color: var(--accent-color);
+        }
+
+        .copyright {
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        /* Animations */
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes wave {
+            0%, 100% { height: 20%; }
+            50% { height: 100%; }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.95); opacity: 0.7; }
+            50% { transform: scale(1.1); opacity: 1; }
+            100% { transform: scale(0.95); opacity: 0.7; }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            nav { display: none; } /* Simplified for mobile demo */
+            .header-inner { justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-inner">
+            <a href="#" class="logo">EntryMotion</a>
+            <nav>
+                <ul>
+                    <li><a href="#hero" class="active">首页</a></li>
+                    <li><a href="#concepts">设计理念</a></li>
+                    <li><a href="#types">加载形式</a></li>
+                    <li><a href="#guide">最佳实践</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section: The Landing "First Screen" -->
+        <section id="hero" class="hero">
+            <div class="hero-content">
+                <h1>定义“进入时的画面”<br>从加载到体验的完美过渡</h1>
+                <p>探索网页、应用及数字产品中“进入时的画面”设计美学。了解如何通过加载动画、品牌展示和交互反馈，为用户创造第一时间的愉悦感。</p>
+                <a href="#types" class="btn">探索加载形式</a>
+            </div>
+        </section>
+
+        <!-- Concept Section -->
+        <section id="concepts" class="container showcase">
+            <div class="section-header">
+                <h2>为什么“进入时的画面”至关重要？</h2>
+                <p>这不仅仅是等待时间，而是建立品牌印象和用户信任的第一步。</p>
+            </div>
+            
+            <div class="grid">
+                <article class="card">
+                    <div class="card-icon">⚡</div>
+                    <h3>心理预期管理</h3>
+                    <p>当用户点击链接或刷新页面时，他们需要明确的信号来确认系统正在工作。良好的“进入画面”能有效减少用户因等待产生的焦虑感。</p>
+                </article>
+
+                <article class="card">
+                    <div class="card-icon">🎨</div>
+                    <h3>品牌风格传递</h3>
+                    <p>在资源完全加载前的短暂空白期，是展示品牌色彩、字体和设计语言的绝佳机会，强化品牌记忆。</p>
+                </article>
+
+                <article class="card">
+                    <div class="card-icon">🚀</div>
+                    <h3>性能感知优化</h3>
+                    <p>流畅的过渡动画可以让用户感觉页面加载速度极快，即使实际上数据传输仍在进行中。</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- Types of Loaders -->
+        <section id="types" class="container showcase">
+            <div class="section-header">
+                <h2>常见的“进入时的画面”类型</h2>
+                <p>根据应用场景和用户习惯，选择最适合的视觉引导方式。</p>
+            </div>
+
+            <div class="grid">
+                <!-- Loader 1 -->
+                <article class="card">
+                    <h3>1. 经典旋转器</h3>
+                    <div class="demo-area">
+                        <div class="loader-spinner"></div>
+                    </div>
+                    <p style="margin-top: 1rem;">最通用、最被广泛接受的加载图标，适用于几乎所有场景。</p>
+                    <div class="demo-controls">
+                        <button class="demo-btn" onclick="document.querySelector('.loader-spinner').style.animationDuration='0.2s'">快</button>
+                        <button class="demo-btn" onclick="document.querySelector('.loader-spinner').style.animationDuration='1.5s'">慢</button>
+                    </div>
+                </article>
+
+                <!-- Loader 2 -->
+                <article class="card">
+                    <h3>2. 动态波浪</h3>
+                    <div class="demo-area">
+                        <div class="loader-wave">
+                            <div class="wave-bar"></div>
+                            <div class="wave-bar"></div>
+                            <div class="wave-bar"></div>
+                            <div class="wave-bar"></div>
+                            <div class="wave-bar"></div>
+                        </div>
+                    </div>
+                    <p style="margin-top: 1rem;">富有节奏感和现代感，常用于音乐应用或科技类网站的“进入时的画面”。</p>
+                </article>
+
+                <!-- Loader 3 -->
+                <article class="card">
+                    <h3>3. 脉冲呼吸</h3>
+                    <div class="demo-area">
+                        <div class="loader-pulse"></div>
+                    </div>
+                    <p style="margin-top: 1rem;">柔和且不抢眼，适合作为后台数据同步或状态指示的背景元素。</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- Guide Section -->
+        <section id="guide" class="container article-content">
+            <article>
+                <h2>设计“进入时的画面”的最佳实践</h2>
+                <p>设计一个优秀的进入画面需要考虑交互逻辑和视觉美学。以下是核心建议：</p>
+                
+                <h3>1. 时间控制</h3>
+                <p>加载动画不应无限期存在。必须设定明确的超时时间。如果资源加载超过3秒，应提供“跳过”或“取消”的选项，以免用户流失。</p>
+
+                <h3>2. 内容优先级</h3>
+                <p>在“进入时的画面”中，避免放置与核心内容无关的干扰元素。确保动画本身足够简洁，不抢占用户注意力。</p>
+
+                <h3>3. 上下文一致性</h3>
+                <p>加载动画的风格应与整体网页的UI语言保持一致。如果网站是极简主义的，就不要使用过于花哨的卡通加载动画。</p>
+
+                <h3>4. 进度反馈</h3>
+                <p>对于大文件下载或复杂页面，提供可视化的进度条比单纯的旋转图标更能让用户安心。</p>
+            </article>
+
+            <article>
+                <h2>常见问题解答</h2>
+                <ul>
+                    <li><strong>Q: 是否所有页面都需要加载动画？</strong><br>A: 只有当资源加载时间超过500毫秒，或者页面内容变化较大（如从列表页跳转至详情页）时，才建议使用过渡动画。</li>
+                    <li><strong>Q: 如何避免“进入时的画面”显得卡顿？</strong><br>A: 使用CSS3硬件加速属性（如transform和opacity）来编写动画，避免使用会引起重排的属性（如width, height）。</li>
+                    <li><strong>Q: 移动端如何处理“进入时的画面”？</strong><br>A: 移动端屏幕较小，应优先使用简洁的旋转器或极简的波浪效果，避免复杂的SVG或大型图片。</li>
+                </ul>
+            </article>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="#" class="logo" style="display:block; margin-bottom:1rem;">EntryMotion</a>
+                    <p style="color:var(--text-secondary); font-size:0.9rem;">
+                        专注于探索数字体验中的视觉引导与交互细节，为您提供专业的界面设计参考。
+                    </p>
+                </div>
+                <div class="footer-col">
+                    <h4>设计指南</h4>
+                    <ul>
+                        <li><a href="#">加载动画原理</a></li>
+                        <li><a href="#">首屏视觉层级</a></li>
+                        <li><a href="#">过渡效果规范</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>资源</h4>
+                    <ul>
+                        <li><a href="#">图标库</a></li>
+                        <li><a href="#">色彩搭配</a></li>
+                        <li><a href="#">字体推荐</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>关于我们</h4>
+                    <ul>
+                        <li><a href="#">设计理念</a></li>
+                        <li><a href="#">联系合作</a></li>
+                        <li><a href="#">隐私政策</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2023 EntryMotion Design Guide. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
